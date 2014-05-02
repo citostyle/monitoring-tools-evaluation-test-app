@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 #gems for heroku
 gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
