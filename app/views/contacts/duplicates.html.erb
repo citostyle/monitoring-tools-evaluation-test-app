@@ -1,0 +1,7 @@
+<% @duplicates.each { |key, duplicate_contacts| %>
+  <b><%= key %></b>: 
+  <% duplicate_contacts.each { |duplicate| %>
+    <%= duplicate.name %>
+  <% } %>
+  <br/><br/>
+<% } %>

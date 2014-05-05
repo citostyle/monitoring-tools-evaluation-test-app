@@ -6,6 +6,18 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
   end
+  
+  #find duplicates, where the definition of duplicates is: 
+  #take the first three letters and look for any occurence within the whole string
+  #essentially, we just want something ineffecient that hits the database
+  def duplicates
+    @duplicates = {}
+    @contacts = Contact.limit(600)
+    @contacts.each { |contact|
+      initial_letters = contact.name[0, 3]
+      @duplicates[initial_letters] = Contact.where("name like '%#{initial_letters}%'")
+    }
+  end
 
   # GET /contacts/1
   # GET /contacts/1.json
