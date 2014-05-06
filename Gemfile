@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 #gems for heroku
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
-
+gem 'oboe-heroku'
 
 gem 'nokogiri'
 
