@@ -1,3 +1,5 @@
+require 'crawler'
+
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
@@ -12,18 +14,24 @@ class ContactsController < ApplicationController
   #essentially, we just want something ineffecient that hits the database
   def duplicates
     @duplicates = {}
-    @contacts = Contact.limit(600)
+    @contacts = Contact.limit(500)
     @contacts.each { |contact|
       initial_letters = contact.name[0, 3]
       @duplicates[initial_letters] = Contact.where("name like '%#{initial_letters}%'")
     }
   end
 
+
+  def crawl
+    logger.error "wtf?!?!?"
+    crawler = Crawler.new
+    @items = crawler.crawl 
+  end
+
   # GET /contacts/1
   # GET /contacts/1.json
   def show
   end
-
   # GET /contacts/new
   def new
     @contact = Contact.new
