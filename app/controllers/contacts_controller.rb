@@ -23,7 +23,6 @@ class ContactsController < ApplicationController
 
 
   def crawl
-    logger.error "wtf?!?!?"
     crawler = Crawler.new
     @items = crawler.crawl 
   end
